@@ -46,21 +46,21 @@ function getData( name ){
       dataType: 'json',
       async: false,
       success: function(data) {
-        localStorage.setItem(name, JSON.stringify(data))
-        localStorage.setItem(name+'Version', localStorage.getItem('version'))
-        return data
+        localStorage.setItem(name, JSON.stringify(data));
+        localStorage.setItem(name+'Version', localStorage.getItem('version'));
+        return data;
       },
       fail: function () {
         $('#message').html("<b>Can not get information (<a href='"+name.json+"'>"+name+".json</a>) from RPi-Monitor server.</b>");
         $('#message').removeClass('hide');
-        return null
+        return null;
       }
-    }).responseJSON
+    }).responseJSON;
   }
 }
 
 function ShowFriends(){
-  var data = getData('friends')
+  var data = getData('friends');
   if ( data.length > 0 ) {
     $('#friends').empty();
     for (var i = 0; i < data.length; i++) {
@@ -173,8 +173,8 @@ function AddDialogs(){
 }
 
 function AddTopmenu(){
-  page = getData('page')
-  data = getData('static')
+  page = getData('page');
+  data = getData('static');
   try {
     document.title = eval(page.pagetitle);
   }
@@ -281,7 +281,7 @@ function UpdateMenu(){
       dropDownMenu+='<li><a href="status.html?activePage='+iloop+'">'+eval(data.status[iloop])+'</a></li>';
     }
     dropDownMenu+='</ul>';
-    $('#statuslink').html( 'Status <b class="caret"></b>')
+    $('#statuslink').html( 'Status <b class="caret"></b>');
     $(dropDownMenu).insertAfter('#statuslink');
     $('#statuslink').addClass('dropdown-toggle');
     $('#statuslink').attr('data-toggle','dropdown');
@@ -300,7 +300,7 @@ function UpdateMenu(){
       dropDownMenu+='<li><a href="statistics.html?activePage='+iloop+'">'+eval(data.statistics[iloop])+'</a></li>';
     }
     dropDownMenu+='</ul>';
-    $('#statisticslink').html( 'Statistics <b class="caret"></b>')
+    $('#statisticslink').html( 'Statistics <b class="caret"></b>');
     $(dropDownMenu).insertAfter('#statisticslink');
     $('#statisticslink').addClass('dropdown-toggle');
     $('#statisticslink').attr('data-toggle','dropdown');
@@ -320,7 +320,7 @@ function UpdateMenu(){
         dropDownMenu+='<li><a href="addons.html?activePage='+iloop+'">'+eval(data.addons[iloop])+'</a></li>';
       }
       dropDownMenu+='</ul>';
-      $('#addonslink').html( 'Add-ons <b class="caret"></b>')
+      $('#addonslink').html( 'Add-ons <b class="caret"></b>');
       $(dropDownMenu).insertAfter('#addonslink');
       $('#addonslink').addClass('dropdown-toggle');
       $('#addonslink').attr('data-toggle','dropdown');
@@ -337,7 +337,7 @@ function getVersion(){
     success: function(data) {
         localStorage.setItem('version', data.version);
       }
-    })
+    });
 }
 
 $(function () {
